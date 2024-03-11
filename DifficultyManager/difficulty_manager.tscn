@@ -5,17 +5,18 @@
 [sub_resource type="Curve" id="Curve_io4bj"]
 min_value = 0.25
 max_value = 2.0
-_data = [Vector2(0, 2), 0.0, -1.75, 0, 1, Vector2(1, 0.25), -1.75, 0.0, 1, 0]
-point_count = 2
+_data = [Vector2(0, 2), 0.0, -1.34305, 0, 0, Vector2(0.318021, 1.85), -2.35833, -2.35833, 0, 0, Vector2(1, 0.25), -3.99529, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Curve" id="Curve_4qxl7"]
 min_value = 10.0
 max_value = 150.0
-_data = [Vector2(0, 10), 0.0, 140.0, 0, 1, Vector2(1, 150), 140.0, 0.0, 1, 0]
+_data = [Vector2(0, 23.0406), 0.0, 126.959, 0, 1, Vector2(1, 150), 126.959, 0.0, 1, 0]
 point_count = 2
 
 [node name="DifficultyManager" type="Node"]
 script = ExtResource("1_w0uyn")
+game_length = 180.0
 spawn_time_curve = SubResource("Curve_io4bj")
 enemy_health_curve = SubResource("Curve_4qxl7")
 

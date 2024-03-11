@@ -1,6 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://nso460lg2553"]
+[gd_scene load_steps=6 format=3 uid="uid://nso460lg2553"]
 
 [ext_resource type="Script" path="res://UserInterface/victory_layer.gd" id="1_1qxc3"]
+[ext_resource type="Texture2D" uid="uid://bbbdm3lolgvs" path="res://Assets/star.png" id="2_8hjsr"]
+[ext_resource type="FontFile" uid="uid://bk2h5ji6x4phb" path="res://Assets/Asap/static/Asap-Bold.ttf" id="2_mllag"]
+
+[sub_resource type="Theme" id="Theme_6uxgg"]
+default_font = ExtResource("2_mllag")
 
 [sub_resource type="LabelSettings" id="LabelSettings_3ikfb"]
 font_size = 96
@@ -22,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_6uxgg")
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(400, 400)
@@ -36,20 +42,70 @@ text = "Victory"
 label_settings = SubResource("LabelSettings_3ikfb")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+[node name="StarContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RetryButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Star1" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/StarContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_8hjsr")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Star2" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/StarContainer"]
+unique_name_in_owner = true
+modulate = Color(0.0705882, 0.0705882, 0.0705882, 1)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_8hjsr")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Star3" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/StarContainer"]
+unique_name_in_owner = true
+modulate = Color(0.0705882, 0.0705882, 0.0705882, 1)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_8hjsr")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SurvivedLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Survived +1"
+horizontal_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Full Heath +1"
+horizontal_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Money Money Money +1"
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="RetryButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/ButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 text = "Retry"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/ButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 text = "Quit"
 
-[connection signal="button_down" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/RetryButton" to="." method="restart_game"]
-[connection signal="button_down" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="quit_game"]
+[connection signal="button_down" from="CenterContainer/PanelContainer/VBoxContainer/ButtonContainer/RetryButton" to="." method="restart_game"]
+[connection signal="button_down" from="CenterContainer/PanelContainer/VBoxContainer/ButtonContainer/QuitButton" to="." method="quit_game"]

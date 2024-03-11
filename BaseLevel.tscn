@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bd8wh2estqliy"]
+[gd_scene load_steps=20 format=3 uid="uid://bd8wh2estqliy"]
 
 [ext_resource type="MeshLibrary" uid="uid://b5wav48ktkxli" path="res://MeshLibraries/SpaceLibrary.tres" id="1_3xsto"]
 [ext_resource type="PackedScene" uid="uid://dlh7l16uu1b4y" path="res://RayPickerCamera/ray_picker_camera.tscn" id="1_vt7bu"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bf581girq4lvm" path="res://Base/base.tscn" id="3_eyew1"]
 [ext_resource type="Script" path="res://TurretManager.gd" id="5_bsi1w"]
 [ext_resource type="PackedScene" uid="uid://cfnoftnafo1dw" path="res://Turret/turret.tscn" id="6_cuxqa"]
+[ext_resource type="FontFile" uid="uid://bk2h5ji6x4phb" path="res://Assets/Asap/static/Asap-Bold.ttf" id="8_cr6qb"]
 [ext_resource type="Script" path="res://Bank.gd" id="8_tb7x8"]
 [ext_resource type="PackedScene" uid="uid://o6b8yi0nklbw" path="res://DifficultyManager/difficulty_manager.tscn" id="9_wkkr4"]
 [ext_resource type="PackedScene" uid="uid://nso460lg2553" path="res://UserInterface/victory_layer.tscn" id="10_f8trg"]
@@ -25,7 +26,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7khp1"]
-albedo_color = Color(0.108721, 0.108721, 0.108721, 1)
+albedo_color = Color(0.560784, 0.6, 0.301961, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_yspei"]
 _data = {
@@ -33,6 +34,12 @@ _data = {
 "tilts": PackedFloat32Array(0, -0.0526046, 0.0262198, 0, 0)
 }
 point_count = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5m67n"]
+albedo_color = Color(0.227451, 0.227451, 0.227451, 1)
+
+[sub_resource type="Theme" id="Theme_7dhet"]
+default_font = ExtResource("8_cr6qb")
 
 [sub_resource type="LabelSettings" id="LabelSettings_dvom3"]
 font_size = 64
@@ -48,7 +55,7 @@ environment = SubResource("Environment_ko4l6")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 size = Vector3(100, 2, 100)
 material = SubResource("StandardMaterial3D_7khp1")
@@ -62,14 +69,15 @@ mesh_library = ExtResource("1_3xsto")
 cell_size = Vector3(4, 4, 4)
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(65535, 65534, 0, 65535, 2, 0, 65531, 65535, 0, 4, 65535, 0, 65531, 65534, 0, 65531, 0, 0, 65531, 2, 0, 65532, 65534, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 0, 65534, 0, 0, 2, 0, 1, 65534, 0, 1, 2, 0, 2, 65534, 0, 2, 2, 0, 3, 65534, 0, 3, 2, 0, 4, 65534, 0, 4, 0, 0, 4, 1, 0, 4, 2, 0, 65532, 65535, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 65534, 65534, 0)
+"cells": PackedInt32Array(65535, 65534, 0, 65535, 2, 2, 65531, 65535, 1441794, 4, 65535, 0, 65531, 65534, 1441794, 65531, 0, 1441795, 65531, 2, 655362, 65532, 65534, 3, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 0, 65534, 0, 0, 2, 0, 1, 65534, 0, 1, 2, 0, 2, 65534, 0, 2, 2, 0, 3, 65534, 0, 3, 2, 0, 4, 65534, 1048579, 4, 0, 0, 4, 1, 2, 4, 2, 2, 65532, 65535, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 655363, 2, 0, 0, 65534, 65534, 1048579, 4, 65533, 2, 3, 65533, 2, 2, 65533, 1048578, 1, 65533, 655362, 0, 65533, 2, 65535, 65533, 1048578, 5, 65534, 3, 65534, 65533, 1048578, 65533, 65533, 1048579, 65532, 65533, 1048578, 65531, 65533, 1048578, 65530, 65535, 1441794, 65530, 0, 655362, 65530, 2, 1048578, 65530, 65534, 1441794, 65530, 65533, 655362, 65529, 65533, 1048578, 65529, 65534, 2, 65529, 65535, 1048578, 65529, 0, 2, 65529, 1, 2, 65529, 2, 2, 65529, 65532, 2, 65530, 65532, 1441794, 65531, 65532, 655362, 65532, 65532, 1048578, 65533, 65532, 2, 65534, 65532, 1441794, 65535, 65532, 655362, 0, 65532, 1048578, 1, 65532, 2, 2, 65532, 1441794, 3, 65532, 1048578, 4, 65532, 2, 65529, 65531, 2, 65530, 65531, 2, 65531, 65531, 2, 65532, 65531, 2, 65533, 65531, 2, 65534, 65531, 2, 65535, 65531, 2, 0, 65531, 2, 1, 65531, 2, 2, 65531, 2, 3, 65531, 2, 4, 65531, 2, 5, 65531, 2, 5, 65532, 2, 5, 65533, 2, 5, 65535, 2, 5, 0, 2, 5, 1, 2, 5, 2, 2)
 }
 
-[node name="EnemyPath" type="Path3D" parent="." node_paths=PackedStringArray("difficulty_manager")]
+[node name="EnemyPath" type="Path3D" parent="." node_paths=PackedStringArray("difficulty_manager", "victory_layer")]
 curve = SubResource("Curve3D_yspei")
 script = ExtResource("3_8kurt")
 enemy_scene = ExtResource("2_i0b3s")
 difficulty_manager = NodePath("../DifficultyManager")
+victory_layer = NodePath("../VictoryLayer")
 
 [node name="Road" type="CSGPolygon3D" parent="EnemyPath"]
 polygon = PackedVector2Array(-1, 0, -1, 0.1, 1, 0.1, 1, 0)
@@ -83,6 +91,7 @@ path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+material = SubResource("StandardMaterial3D_5m67n")
 
 [node name="LeftEdge" type="CSGPolygon3D" parent="EnemyPath"]
 polygon = PackedVector2Array(-1.1, 0, -1.1, 0.15, -0.9, 0.15, -0.9, 0)
@@ -116,7 +125,7 @@ autostart = true
 
 [node name="Base" parent="." instance=ExtResource("3_eyew1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6.5)
-max_health = 50
+max_health = 10
 
 [node name="TurretManager" type="Node3D" parent="." node_paths=PackedStringArray("enemy_path")]
 script = ExtResource("5_bsi1w")
@@ -130,6 +139,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = SubResource("Theme_7dhet")
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -142,10 +152,12 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Bank:"
 label_settings = SubResource("LabelSettings_dvom3")
+uppercase = true
 
 [node name="DifficultyManager" parent="." instance=ExtResource("9_wkkr4")]
 
 [node name="VictoryLayer" parent="." instance=ExtResource("10_f8trg")]
+visible = false
 
 [connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="spawn_enemy"]
 [connection signal="stop_spawning_enemies" from="DifficultyManager" to="EnemyPath" method="_on_difficulty_manager_stop_spawning_enemies"]
